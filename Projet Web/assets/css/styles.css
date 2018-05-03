@@ -42,6 +42,13 @@ a:focus {
 p {
   line-height: 1.5;
 }
+
+.panel-heading {
+  max-height: 10%;
+}
+.panel-body {
+  padding: 2%;
+}
 .wrapper {
   background: #42A8C0;
   max-width: 960px;
@@ -55,7 +62,7 @@ p {
   background: #42A8C0;
   margin-top: 4%;
   width: 240px;
-  height: 70%;
+  height: 80%;
   color: #fff;
 }
 .sidebar-wrapper a {
@@ -68,8 +75,8 @@ p {
   color: #fff;
 }
 .sidebar-wrapper .name {
-  font-size: 32px;
-  font-weight: 900;
+  font-size: 25px;
+  font-weight: 500;
   margin-top: 0;
   margin-bottom: 10px;
 }
@@ -152,8 +159,7 @@ p {
 }
 .main-wrapper {
   background: #fff;
-  padding: 60px;
-  padding-right: 300px;
+  padding: 4%;
 }
 .main-wrapper .section-title {
   text-transform: uppercase;

@@ -12,10 +12,20 @@
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
 
     <style>
-        .profil {
-            width: 20%;
-            height: 90%;
-            background-color: rgba(81, 142, 255, 0.733);
+        .img-profil {
+            padding: 3%;
+            border-radius: 50%;
+            width: 130;
+            height: 130;
+        }
+        .img-post {
+            padding: 2%;
+            border-radius: 50%;
+            width: 80;
+            height: 80;
+        }
+
+        .panel-default {
             margin-top: 4%;
         }
     </style>
@@ -23,7 +33,7 @@
 </head>
 
 <body>
-    <nav class="navbar-inverse">
+    <nav class="navbar-inverse navbar-fixed-top">
         <div class="container-fluid input-group">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">ECE Bond</a>
@@ -39,12 +49,8 @@
                 </div>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">Acceuil</a>
-                </li>
-                <li>
-                    <a href="#">Réseau</a>
-                </li>
+                <li><a href="#">Acceuil</a></li>
+                <li><a href="#">Réseau</a></li>
                 <li><a href="#">Emplois</a></li>
                 <li><a href="#">Messagerie</a></li>
                 <li><a href="#">Notifications</a></li>
@@ -53,16 +59,69 @@
         </div>
     </nav>
 
-    <div id="main" class="wrapper">
-        <div class="row sidebar-wrapper pull-left">
+    <div class="wrapper">
+        <div class="sidebar-wrapper pull-left">
                 <div class="profile-container">
-                    <img class="profile img-responsive img-circle" src="fjords.jpg" alt="" />
-                    <h1 class="name">Côme L'Ollivier</h1>
-                    <h3 class="tagline">Trapeur</h3>
+                    <img class="img-responsive img-profil center-block" src="assets/images/fjords.jpg" alt="" />
+                    <h3 class="name">Côme L'Ollivier</h3>
+                    <h5 class="tagline">Trapeur</h5>
                 </div>
-                
-               
+                <div class="contact-container container-block">
+                    <ul class="list-unstyled contact-list">
+                        <li class="email"><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com">comelolo@yolo.com</a></li>
+                        <li class="phone"><i class="fa fa-phone"></i><a href="tel:0123 456 789">118 218</a></li>
+                        <li class="majeur"><i class="fa fa-briefcase"></i><a href="#" target="_blank">Systemes Embarqués</a></li>
+                        <li class="promo"><i class="fa fa-graduation-cap"></i><a href="#" target="_blank">Promo 2020</a></li>
+                    </ul>
+                </div>  
         </div>
+        
+        <div class="main-wrapper">
+        <div class="row">
+            <!-- main center col -->
+            <div class="col-sm-9">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <form class="form-horizontal" role="form">
+                            <h4>Du nouveau à partager :</h4>
+                            <div class="form-group" style="padding:14px;">
+                                <textarea class="form-control" placeholder="Update your status" rows="4"></textarea>
+                            </div>
+                            <button class="btn btn-primary pull-right" type="button">Post</button>
+                            <ul class="list-inline">
+                                <li><a href=""><i class="glyphicon glyphicon-upload"></i></a></li>
+                                <li><a href=""><i class="glyphicon glyphicon-camera"></i></a></li>
+                                <li><a href=""><i class="glyphicon glyphicon-facetime-video"></i></a></li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                        <div class="panel-body">
+                            <img src="assets/images/profile.png" class="img-post pull-left">
+                            <hr>
+                                <p>Machin à publier quelque chose et cela est très intéressant. <br/>
+                                    Cordialement, <br/> la direction.
+                                </p> 
+                            <hr>
+                           <form>
+                           <div class="input-group">
+                             <div class="input-group-btn">
+                             <button class="btn btn">Like <i class="fa fa-thumbs-o-up"></i></button><button class="btn btn-default">Share <i class="glyphicon glyphicon-share"></i></button>
+                             </div>
+                             <input class="form-control" placeholder="Add a comment.." type="text">
+                           </div>
+                           </form>
+                           
+                         </div>
+                      </div>
+            </div>
+
+        </div>
+    </div>
+
+
     </div>
 
 
