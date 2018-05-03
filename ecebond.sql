@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 03 mai 2018 à 10:12
+-- Généré le :  jeu. 03 mai 2018 à 10:30
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -61,13 +61,6 @@ CREATE TABLE IF NOT EXISTS `commenter` (
   PRIMARY KEY (`id_du_post`,`id_personne`),
   KEY `id_personne` (`id_personne`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `commenter`
---
-
-INSERT INTO `commenter` (`id_du_post`, `id_personne`, `moment`, `txt`) VALUES
-(1, 'ad', '2018-05-03 09:42:33', 'trop cool ');
 
 -- --------------------------------------------------------
 
@@ -135,14 +128,6 @@ CREATE TABLE IF NOT EXISTS `liker` (
   KEY `id_utilisateur` (`id_utilisateur`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `liker`
---
-
-INSERT INTO `liker` (`id_post`, `id_utilisateur`) VALUES
-(1, 'ad'),
-(1, 'cl181647');
-
 -- --------------------------------------------------------
 
 --
@@ -186,13 +171,6 @@ CREATE TABLE IF NOT EXISTS `partager` (
   KEY `id_u` (`id_u`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Déchargement des données de la table `partager`
---
-
-INSERT INTO `partager` (`id_p`, `id_u`, `date_heure`, `text_partage`) VALUES
-(1, 'cl181647', '2018-05-03 09:49:04', 'ouloulou ouloulou');
-
 -- --------------------------------------------------------
 
 --
@@ -202,6 +180,7 @@ INSERT INTO `partager` (`id_p`, `id_u`, `date_heure`, `text_partage`) VALUES
 DROP TABLE IF EXISTS `posts`;
 CREATE TABLE IF NOT EXISTS `posts` (
   `id_post` int(11) NOT NULL AUTO_INCREMENT,
+  `log_utilisateur` varchar(20) NOT NULL,
   `libelle` varchar(100) NOT NULL,
   `chemin` varchar(255) NOT NULL,
   `commentaire` text,
@@ -209,37 +188,19 @@ CREATE TABLE IF NOT EXISTS `posts` (
   `humeur` varchar(25) DEFAULT NULL,
   `activite` varchar(45) DEFAULT NULL,
   `visibilite` int(3) NOT NULL,
-  PRIMARY KEY (`id_post`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `d_h` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id_post`),
+  KEY `log_utilisateur` (`log_utilisateur`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `posts`
 --
 
-INSERT INTO `posts` (`id_post`, `libelle`, `chemin`, `commentaire`, `lieu`, `humeur`, `activite`, `visibilite`) VALUES
-(1, 'commentaire', '', 'trop cool le pot de passation a l ecole !!', 'ece paris', 'content', NULL, 3);
-
--- --------------------------------------------------------
-
---
--- Structure de la table `publier`
---
-
-DROP TABLE IF EXISTS `publier`;
-CREATE TABLE IF NOT EXISTS `publier` (
-  `id_pts` int(11) NOT NULL,
-  `id_uti` varchar(20) NOT NULL,
-  `heure_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id_pts`,`id_uti`),
-  KEY `id_uti` (`id_uti`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `publier`
---
-
-INSERT INTO `publier` (`id_pts`, `id_uti`, `heure_date`) VALUES
-(1, 'od191654', '2018-05-03 09:52:44');
+INSERT INTO `posts` (`id_post`, `log_utilisateur`, `libelle`, `chemin`, `commentaire`, `lieu`, `humeur`, `activite`, `visibilite`, `d_h`) VALUES
+(2, 'cl181647', 'photo', 'chemin de la photo', 'trop cool le pot de passation', 'ece paris', NULL, NULL, 1, '2018-05-03 10:28:41'),
+(3, 'ab191382', 'cv', 'chemin cv', 'cherche stage de 1 mois; partager s\'il vous plait', NULL, NULL, NULL, 2, '2018-05-03 10:29:36'),
+(4, 'ad', 'video', 'chemin de la video', NULL, 'france', 'content', NULL, 3, '2018-05-03 10:30:20');
 
 -- --------------------------------------------------------
 
@@ -353,11 +314,10 @@ ALTER TABLE `partager`
   ADD CONSTRAINT `partager_ibfk_2` FOREIGN KEY (`id_u`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Contraintes pour la table `publier`
+-- Contraintes pour la table `posts`
 --
-ALTER TABLE `publier`
-  ADD CONSTRAINT `publier_ibfk_2` FOREIGN KEY (`id_uti`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `publier_ibfk_3` FOREIGN KEY (`id_pts`) REFERENCES `posts` (`id_post`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `posts`
+  ADD CONSTRAINT `posts_ibfk_1` FOREIGN KEY (`log_utilisateur`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `reseaux`
