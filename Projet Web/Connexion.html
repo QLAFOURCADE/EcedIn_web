@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ECE Bond</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
+    <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/docs.css">
+    <style>
+        .img-profil {
+            padding: 3%;
+            border-radius: 50%;
+            width: 130;
+            height: 130;
+        }
+        .img-post {
+            padding: 2%;
+            border-radius: 50%;
+            width: 80;
+            height: 80;
+        }
+
+        .panel-default {
+            margin-top: 4%;
+        }
+    </style>
+    <style>
+        form {
+            margin-top: 10px;
+            margin-bottom: 100px;
+            margin-right: 400px;
+            margin-left: 400px;
+        }
+
+
+        tr.spaceUnder>td {
+            padding-bottom: 1em;
+        }
+
+        textarea:focus {
+            height: 4em;
+        }
+    </style>
+
+    <script>
+        function validation() {
+            var name = document.forms["myform"]["nom"].value;
+            var numero = document.forms["myform"]["numero"].value;
+            var age = document.forms["myform"]["age"].value;
+            var classe = document.forms["myform"]["classe"].value;
+            var alertvalue = document.getElementById('alertbox');
+
+            var error = "";
+
+            if (name == "") {
+                error += "Le nom est vide\n";
+            }
+            if (numero == "") {
+                error += "Le numéro d'employé est vide\n";
+            }
+            if (age == "") {
+                error += "L'Ancienneté est vide\n";
+            }
+
+            if (error != "") {
+                alertvalue.style.display = "block";
+                alertvalue.style.visibility = "visible";
+                alertvalue.innerHTML = error;
+                return false;
+            } else {
+                return true;
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <nav class="navbar-inverse navbar-fixed-top">
+        <div class="container-fluid input-group">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">ECE Bond</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <left>
+        <br>
+        <br>
+        <img src="assets/images/Icon_ECEBond.PNG" />
+    </left>
+    <center>
+        <h2> Auteur</h2>
+    </center>
+
+    <br>
+    <br>
+
+    <div class="main">
+        <form name="myform" onsubmit="return validation();" action="1traitement.php" method="POST">
+            <div id="alertbox" class="alert alert-danger alert-dismissable fade in" style="display: none; color: black; white-space: pre-wrap;">
+
+            </div>
+            <table>
+                <tr class="spaceUnder">
+                    <td>Login :</td>
+                    <td>
+                        <input class="form-control" type="text" name="login" id="login">
+                    </td>
+                </tr>
+                <tr class="spaceUnder">
+                    <td>Mot de Passe:</td>
+                    <td>
+                        <input class="form-control" type="password" name="motdepasse" id="motdepasse">
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+            <br>
+            <left>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Submit" />
+            </left>
+            <br>
+            <br>
+            <table>
+                <tr class="spaceUnder">
+                    <td>Login :</td>
+                    <td>
+                        <input class="form-control" type="text" name="login" id="login">
+                    </td>
+                </tr>
+                <tr class="spaceUnder">
+                    <td>Adresse mail:</td>
+                    <td>
+
+                        <input class="form-control" type="text" name="adressemail" id="adressemail">
+                    </td>
+                    <td> <p>@edu.ece.fr</p></td>
+                </tr>
+
+            </table>
+            <br>
+            <br>
+            <left>
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Submit" />
+            </left>
+        </form>
+    </div>
+
+</body>
+</html>
