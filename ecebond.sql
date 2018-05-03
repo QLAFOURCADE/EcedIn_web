@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 03 mai 2018 à 10:30
+-- Généré le :  jeu. 03 mai 2018 à 20:20
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -237,14 +237,14 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
   `login` varchar(10) NOT NULL,
   `email` varchar(60) NOT NULL,
   `nom` varchar(60) NOT NULL,
-  `prenom` varchar(60) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `prenom` varchar(60) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
   `anniversaire` date DEFAULT NULL,
   `travail` varchar(50) DEFAULT NULL,
-  `promotion` varchar(30) NOT NULL,
+  `promotion` varchar(30) DEFAULT NULL,
   `majeure` varchar(30) DEFAULT NULL,
   `photoprofil` varchar(255) DEFAULT NULL,
-  `dateco` datetime NOT NULL,
+  `dateco` datetime DEFAULT NULL,
   `formations` text,
   `experiences` text,
   `photofond` varchar(255) DEFAULT NULL,
@@ -258,8 +258,12 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 INSERT INTO `utilisateur` (`login`, `email`, `nom`, `prenom`, `password`, `anniversaire`, `travail`, `promotion`, `majeure`, `photoprofil`, `dateco`, `formations`, `experiences`, `photofond`) VALUES
 ('ab191382', 'audrey.bertrand@edu.ece.fr', 'Bertrand', 'Audrey', 'tata8', '2000-06-13', NULL, 'ING1', NULL, NULL, '2018-05-03 04:54:12', NULL, NULL, NULL),
 ('ad', 'alexis.durant@edu.ece.fr', 'Durant', 'Alexis', '96', '1990-02-11', 'BNP', 'ALUMNI', 'SI', NULL, '2011-05-19 03:31:26', NULL, NULL, NULL),
+('aoaoaoa', 'o.a@edu.ece.fr', 'Aoooooo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('cl181647', 'chloe.lachevre@edu.ece.fr', 'Lachevre', 'Chloe', 'tutu1515', '1990-01-19', 'l\'oreal', 'alumni', 'se', NULL, '2014-06-01 12:16:41', NULL, NULL, NULL),
+('cl191785', 'come.l-ollivier@edu.ece.fr', 'L Ollivier', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('ef141352', 'etienne.fallont@edu.ece.fr', 'Fallont', 'Etienne', 'tutu1515', '1994-04-16', NULL, 'ING5', 'Environnement', NULL, '2017-05-14 06:28:13', 'LYCEE PARIS\r\nECE PARIS \r\n....', 'McDo 5 mois ', NULL),
+('fd', 'francoise.doli@edu.ece.fr', 'Doli', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('gd', 'gregoire.deconzages@edu.ece.fr', 'Deconzages', 'Gregoire', 'tutu1414', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('od191654', 'olivier.decazes@edu.ece.fr', 'Decazes', 'Olivier', 'olioli', '1996-01-12', NULL, 'ING3', NULL, NULL, '2016-07-20 20:32:49', 'Lycee sainte marie Grand Lebrun\r\nPrepa \r\nECE Paris ', 'Monoprix Bordeaux 2 mois\r\nBNP 1 mois\r\n', NULL);
 
 --
