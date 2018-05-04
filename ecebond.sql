@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  jeu. 03 mai 2018 à 20:20
+-- Généré le :  ven. 04 mai 2018 à 09:15
 -- Version du serveur :  5.7.19
 -- Version de PHP :  5.6.31
 
@@ -71,10 +71,10 @@ CREATE TABLE IF NOT EXISTS `commenter` (
 DROP TABLE IF EXISTS `discussion`;
 CREATE TABLE IF NOT EXISTS `discussion` (
   `id_discus` int(11) NOT NULL AUTO_INCREMENT,
-  `emmetteur` varchar(20) NOT NULL,
+  `emetteur` varchar(20) NOT NULL,
   `recepteur` varchar(20) NOT NULL,
   PRIMARY KEY (`id_discus`),
-  KEY `emmetteur` (`emmetteur`),
+  KEY `emmetteur` (`emetteur`),
   KEY `recepteur` (`recepteur`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `discussion` (
 -- Déchargement des données de la table `discussion`
 --
 
-INSERT INTO `discussion` (`id_discus`, `emmetteur`, `recepteur`) VALUES
+INSERT INTO `discussion` (`id_discus`, `emetteur`, `recepteur`) VALUES
 (3, 'ef141352', 'od191654'),
 (5, 'ab191382', 'cl181647'),
 (6, 'ad', 'ef141352'),
@@ -144,16 +144,18 @@ CREATE TABLE IF NOT EXISTS `message` (
   PRIMARY KEY (`id_message`),
   KEY `id_discussion` (`id_discussion`),
   KEY `id_emetteur` (`id_emetteur`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `message`
 --
 
 INSERT INTO `message` (`id_message`, `id_discussion`, `id_emetteur`, `moment`, `textemessage`) VALUES
-(1, 3, 'ad', '2018-05-03 09:16:36', NULL),
-(3, 6, 'cl181647', '2018-05-03 09:21:47', 'coucou, comment vas tu ?'),
-(4, 8, 'ab191382', '2018-05-03 09:22:15', 'alors on se voit quand ?');
+(1, 3, 'ad', '2018-05-04 09:13:39', NULL),
+(2, 6, 'cl181647', '2018-05-04 09:13:39', 'coucou, comment vas tu ????'),
+(3, 8, 'ab191382', '2018-05-04 09:14:56', 'alors on se voit ou et quand ?'),
+(4, 8, 'od191654', '2018-05-04 09:14:56', 'a 8h à l\'ecole E2 - 316\r\na +'),
+(5, 3, 'ad', '2018-05-04 09:01:04', NULL);
 
 -- --------------------------------------------------------
 
@@ -258,11 +260,11 @@ CREATE TABLE IF NOT EXISTS `utilisateur` (
 INSERT INTO `utilisateur` (`login`, `email`, `nom`, `prenom`, `password`, `anniversaire`, `travail`, `promotion`, `majeure`, `photoprofil`, `dateco`, `formations`, `experiences`, `photofond`) VALUES
 ('ab191382', 'audrey.bertrand@edu.ece.fr', 'Bertrand', 'Audrey', 'tata8', '2000-06-13', NULL, 'ING1', NULL, NULL, '2018-05-03 04:54:12', NULL, NULL, NULL),
 ('ad', 'alexis.durant@edu.ece.fr', 'Durant', 'Alexis', '96', '1990-02-11', 'BNP', 'ALUMNI', 'SI', NULL, '2011-05-19 03:31:26', NULL, NULL, NULL),
-('aoaoaoa', 'o.a@edu.ece.fr', 'Aoooooo', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('aoaoaoa', 'o.a@edu.ece.fr', 'Aoooooo', 'a', 'a', '1998-05-02', 'NULL', 'ING1', 'NULL', NULL, NULL, NULL, NULL, NULL),
 ('cl181647', 'chloe.lachevre@edu.ece.fr', 'Lachevre', 'Chloe', 'tutu1515', '1990-01-19', 'l\'oreal', 'alumni', 'se', NULL, '2014-06-01 12:16:41', NULL, NULL, NULL),
-('cl191785', 'come.l-ollivier@edu.ece.fr', 'L Ollivier', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-('ef141352', 'etienne.fallont@edu.ece.fr', 'Fallont', 'Etienne', 'tutu1515', '1994-04-16', NULL, 'ING5', 'Environnement', NULL, '2017-05-14 06:28:13', 'LYCEE PARIS\r\nECE PARIS \r\n....', 'McDo 5 mois ', NULL),
-('fd', 'francoise.doli@edu.ece.fr', 'Doli', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+('cl191785', 'come.l-ollivier@edu.ece.fr', 'L Ollivier', 'Come', 'tata1719', '1997-02-25', 'NULL', 'ING3', '', NULL, NULL, NULL, NULL, NULL),
+('ef141352', 'etienne.fallont@edu.ece.fr', 'Fallont', 'Etienne', 'tutu1515', '1994-04-16', NULL, 'ING5', 'Environnement', NULL, '2018-05-04 10:22:26', 'LYCEE PARIS\r\nECE PARIS \r\n....', 'McDo 5 mois ', NULL),
+('fd', 'francoise.doli@edu.ece.fr', 'Doli', 'Francoise', 'ff78', '1998-06-05', 'NULL', 'ING2', 'NULL', NULL, '2018-05-04 10:49:58', NULL, NULL, NULL),
 ('gd', 'gregoire.deconzages@edu.ece.fr', 'Deconzages', 'Gregoire', 'tutu1414', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 ('od191654', 'olivier.decazes@edu.ece.fr', 'Decazes', 'Olivier', 'olioli', '1996-01-12', NULL, 'ING3', NULL, NULL, '2016-07-20 20:32:49', 'Lycee sainte marie Grand Lebrun\r\nPrepa \r\nECE Paris ', 'Monoprix Bordeaux 2 mois\r\nBNP 1 mois\r\n', NULL);
 
@@ -287,7 +289,7 @@ ALTER TABLE `commenter`
 -- Contraintes pour la table `discussion`
 --
 ALTER TABLE `discussion`
-  ADD CONSTRAINT `discussion_ibfk_1` FOREIGN KEY (`emmetteur`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `discussion_ibfk_1` FOREIGN KEY (`emetteur`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `discussion_ibfk_2` FOREIGN KEY (`recepteur`) REFERENCES `utilisateur` (`login`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
