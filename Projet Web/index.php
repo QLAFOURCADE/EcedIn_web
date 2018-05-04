@@ -53,7 +53,7 @@
                 <li><a href="index.php">Acceuil</a></li>
                 <li><a href="reseau.php">Réseau</a></li>
                 <li><a href="emploi.php">Emplois</a></li>
-                <li><a href="message.php?contact=">Messagerie</a></li>
+                <li><a href="message.php">Messagerie</a></li>
                 <li><a href="notif.php">Notifications</a></li>
                 <li class="active"><a href="profil.php">Vous</a></li>
             </ul>

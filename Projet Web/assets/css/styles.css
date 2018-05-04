@@ -26,7 +26,7 @@ h6 {
   font-weight: 700;
 }
 a {
-  color: #dff2f7;
+  color: #6f8e97;
   -webkit-transition: all 0.4s ease-in-out;
   -moz-transition: all 0.4s ease-in-out;
   -ms-transition: all 0.4s ease-in-out;
@@ -513,6 +513,13 @@ p {
 #frame #sidepanel #contacts::-webkit-scrollbar-thumb {
   background-color: #42a8c0;
 }
+#frame #sidepanel #contacts a {
+  color: #dff2f7;
+  -webkit-transition: all 0.4s ease-in-out;
+  -moz-transition: all 0.4s ease-in-out;
+  -ms-transition: all 0.4s ease-in-out;
+  -o-transition: all 0.4s ease-in-out;
+}
 #frame #sidepanel #contacts ul li.contact {
   position: relative;
   padding: 10px 0 5px 0;
@@ -691,7 +698,6 @@ p {
 #frame .content .messages ul li {
   display: inline-block;
   clear: both;
-  float: left;
   margin: 15px 15px 5px 15px;
   width: calc(100% - 25px);
   font-size: 0.9em;

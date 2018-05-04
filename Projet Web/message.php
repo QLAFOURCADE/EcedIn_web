@@ -1,7 +1,27 @@
 <?php
 require('server_connexion.php');
 $con = connect_and_select_db();
+$id_profile = "ad";
 
+function add_comment() {
+    $con = connect_and_select_db();
+    $message = $_POST['new_message'];
+    $discussion_active = $_GET['discus'];
+    $date = date("Y-m-d h:i:s");
+    $id_profile = "ad";
+
+    if ($message != "") {
+    $requete = $insertStmt = "INSERT message (id_discussion, id_emetteur, moment, textemessage)
+    values ('$discussion_active', '$id_profile', '$date', '$message')";
+    $result = mysqli_query($con, $requete);
+    }
+}
+
+if (isset($_POST['new_message'])) {
+    echo add_comment();
+    echo "<meta http-equiv='refresh' content='0'>";
+    return;
+}
 
 ?>
 
@@ -86,8 +106,14 @@ $con = connect_and_select_db();
             <div id="sidepanel">
                 <div id="profile">
                     <div class="wrap">
-                        <img id="profile-img" class="img-post" src="assets/images/profile.png" alt="" />
+                        <!-- commande SQL pour récupérer les infos du client  -->
+                        <?php
+                        $photo_profile = "assets/images/profile.png";
+                        echo '
+                        <img id="profile-img" src='.$photo_profile.' alt="" />
                         <p>Jean Pierre Segado</p>
+                        ';
+                        ?>
                     </div>
                 </div>
                 <div id="search">
@@ -99,20 +125,21 @@ $con = connect_and_select_db();
                 <div id="contacts">
                     <ul>
                         <?php
-                            $search = "SELECT emmetteur FROM discussion WHERE recepteur = 'ad' UNION SELECT recepteur FROM discussion WHERE emmetteur = 'ad'";
+                            $search = "SELECT emetteur, id_discus FROM discussion WHERE recepteur = '".$id_profile."' UNION SELECT recepteur, id_discus FROM discussion WHERE emetteur = '".$id_profile."'";
                             $result = mysqli_query($con, $search);
                             while($discu = mysqli_fetch_array($result)) {
-                                $user_result = mysqli_query($con, "SELECT nom, prenom, photoprofil FROM utilisateur WHERE login = '".$discu['emmetteur']."'");
+                                $user_result = mysqli_query($con, "SELECT nom, prenom, photoprofil FROM utilisateur WHERE login = '".$discu['emetteur']."'");
                                 while ($data = mysqli_fetch_array($user_result)) {
                                     $lastname = $data['nom'];
                                     $firstname = $data['prenom'];
                                     $photo = $data['photoprofil'];
-                                    $discussion_active = 0;
                                     if ($photo=="") {$photo="assets/images/batman.jpg";}
-                                    if ($discu['emmetteur'] == $_GET['contact']) { $active="active";} else {$active="";}
+                                    if(isset($_GET['contact'])){
+                                        if ($discu['emetteur'] == $_GET['contact']) { $active="active";} else {$active="";}
+                                    } else {$active="";}
                                     echo '
-                                    <a href="message.php?contact='.$discu['emmetteur'].'">
-                                    <li id="'.$discu["emmetteur"].'" class="contact '.$active.'">
+                                    <a href="message.php?contact='.$discu['emetteur'].'&amp;discus='.$discu['id_discus'].'">
+                                    <li id="'.$discu["emetteur"].'" class="contact '.$active.'">
                                         <div class="wrap">
                                             <img src=' .$photo. ' alt="" />
                                                 <div class="meta">
@@ -138,60 +165,61 @@ $con = connect_and_select_db();
             <div class="content">
                 <div id="" class="contact-profile">
                     <?php
-                    $contact_profile = mysqli_query($con, "SELECT nom, prenom, photoprofil FROM utilisateur WHERE login = '".$discu['emmetteur']."'");
+                    if(isset($_GET['contact'])){
+                    $contact_profile = mysqli_query($con, "SELECT nom, prenom, photoprofil FROM utilisateur WHERE login = '".$_GET['contact']."'"); 
                     while ($data = mysqli_fetch_array($contact_profile)) {
                         $lastname = $data['nom'];
                         $firstname = $data['prenom'];
-                        $photo = $data['photoprofil'];
+                        $photo_contact = $data['photoprofil'];
+                        if ($photo_contact=="") {$photo_contact="assets/images/batman.jpg";}
+                        echo' 
+                        <img src='.$photo_contact.' alt="" />
+                        <p>'.$firstname.' '.$lastname.'</p>';
+                    }
                     }
                     ?>
-                    <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                    <p>Harvey Specter</p>
                 </div>
                 <div class="messages">
                     <ul>
-                        <li class="sent">
-                            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                            <p>How the hell am I supposed to get a jury to believe you when I am not even sure that I do?!</p>
-                        </li>
-                        <li class="replies">
-                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                            <p>When you're backed against the wall, break the god damn thing down.</p>
-                        </li>
-                        <li class="replies">
-                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                            <p>Excuses don't win championships.</p>
-                        </li>
-                        <li class="sent">
-                            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                            <p>Oh yeah, did Michael Jordan tell you that?</p>
-                        </li>
-                        <li class="replies">
-                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                            <p>No, I told him that.</p>
-                        </li>
-                        <li class="replies">
-                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                            <p>What are your choices when someone puts a gun to your head?</p>
-                        </li>
-                        <li class="sent">
-                            <img src="http://emilcarlsson.se/assets/mikeross.png" alt="" />
-                            <p>What are you talking about? You do what they say or they shoot you.</p>
-                        </li>
-                        <li class="replies">
-                            <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
-                            <p>Wrong. You take the gun, or you pull out a bigger one. Or, you call their bluff. Or, you do any
-                                one of a hundred and forty six other things.</p>
-                        </li>
+                    <?php
+                        if(isset($_GET['discus'])){
+                        $search = "SELECT textemessage, id_emetteur FROM `message` WHERE id_discussion = '".$_GET['discus']."' ORDER BY moment;";
+                        $result = mysqli_query($con, $search);
+                        while($row = mysqli_fetch_array($result)) {
+                            $message = $row['textemessage'];
+                            if ($row['id_emetteur']==$id_profile) {
+                                $class = "sent";
+                                $photo_text = $photo_profile;
+                            } else { 
+                                $class="replies";
+                                $photo_text = $photo_contact; 
+                            }
+                            echo'
+                            <li class='.$class.'>
+                                <img src='.$photo_text.' alt="" />
+                                <p>'.$message.'</p>
+                            </li>';
+                        }
+                    }
+                    ?>
                     </ul>
                 </div>
                 <div class="message-input">
                     <div class="wrap">
-                        <input type="text" placeholder="Write your message..." />
-                        <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
-                        <button class="submit">
-                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                        </button>
+                        <?php
+                        if(isset($_GET['discus']) && isset($_GET['contact'])){
+                            echo '
+                            <form method="POST" action="">
+                                <input type="text" id="new_message" name="new_message" placeholder="Write your message..." />
+                                <i class="fa fa-paperclip attachment" aria-hidden="true"></i>
+                                <button type="submit" class="submit">
+                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                </button>
+                            </form>
+                            ';       
+                            
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -207,32 +235,6 @@ $con = connect_and_select_db();
         <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
         <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
         <script>$(".messages").animate({ scrollTop: $(document).height() }, "fast");
-
-            $("#profile-img").click(function () {
-                $("#status-options").toggleClass("active");
-            });
-
-            $(".expand-button").click(function () {
-                $("#profile").toggleClass("expanded");
-                $("#contacts").toggleClass("expanded");
-            });
-
-
-
-            function newMessage() {
-                message = $(".message-input input").val();
-                if ($.trim(message) == '') {
-                    return false;
-                }
-                $('<li class="sent"><img src="http://emilcarlsson.se/assets/mikeross.png" alt="" /><p>' + message + '</p></li>').appendTo($('.messages ul'));
-                $('.message-input input').val(null);
-                $('.contact.active .preview').html('<span>You: </span>' + message);
-                $(".messages").animate({ scrollTop: $(document).height() }, "fast");
-            };
-
-            $('.submit').click(function () {
-                newMessage();
-            });
 
             $(window).on('keydown', function (e) {
                 if (e.which == 13) {
