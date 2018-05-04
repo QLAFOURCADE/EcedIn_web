@@ -437,136 +437,7 @@ p {
     display: none;
   }
 }
-#frame #sidepanel #profile .wrap #status-options {
-  position: absolute;
-  opacity: 0;
-  visibility: hidden;
-  width: 150px;
-  margin: 70px 0 0 0;
-  border-radius: 6px;
-  z-index: 99;
-  line-height: initial;
-  background: rgba(33, 99, 116, 0.767);
-  -moz-transition: 0.3s all ease;
-  -o-transition: 0.3s all ease;
-  -webkit-transition: 0.3s all ease;
-  transition: 0.3s all ease;
-}
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options {
-    width: 58px;
-    margin-top: 57px;
-  }
-}
-#frame #sidepanel #profile .wrap #status-options.active {
-  opacity: 1;
-  visibility: visible;
-  margin: 75px 0 0 0;
-}
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options.active {
-    margin-top: 62px;
-  }
-}
-#frame #sidepanel #profile .wrap #status-options:before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-bottom: 8px solid rgba(33, 99, 116, 0.767);
-  margin: -8px 0 0 24px;
-}
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options:before {
-    margin-left: 23px;
-  }
-}
-#frame #sidepanel #profile .wrap #status-options ul {
-  overflow: hidden;
-  border-radius: 6px;
-}
-#frame #sidepanel #profile .wrap #status-options ul li {
-  padding: 15px 0 10px 18px;
-  display: block;
-  cursor: pointer;
-}
-#frame #sidepanel #profile .wrap #status-options ul li:hover {
-  background: rgba(42, 124, 145, 0.767);
-}
-#frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  margin: 5px 0 0 0;
-}
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li span.status-circle {
-    width: 14px;
-    height: 14px;
-  }
-}
-#frame
-  #sidepanel
-  #profile
-  .wrap
-  #status-options
-  ul
-  li
-  span.status-circle:before {
-  content: "";
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  margin: -3px 0 0 -3px;
-  background: transparent;
-  border-radius: 50%;
-  z-index: 0;
-}
-@media screen and (max-width: 735px) {
-  #frame
-    #sidepanel
-    #profile
-    .wrap
-    #status-options
-    ul
-    li
-    span.status-circle:before {
-    height: 18px;
-    width: 18px;
-  }
-}
-#frame #sidepanel #profile .wrap #status-options ul li p {
-  padding-left: 12px;
-}
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #profile .wrap #status-options ul li p {
-    display: none;
-  }
-}
 
-#frame
-  #sidepanel
-  #profile
-  .wrap
-  #status-options
-  ul
-  li#status-offline
-  span.status-circle {
-  background: #95a5a6;
-}
-#frame
-  #sidepanel
-  #profile
-  .wrap
-  #status-options
-  ul
-  li#status-offline.active
-  span.status-circle:before {
-  border: 1px solid #95a5a6;
-}
 #frame #sidepanel #profile .wrap #expanded {
   padding: 100px 0 0 0;
   display: block;
@@ -634,16 +505,6 @@ p {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts {
-    height: calc(100% - 149px);
-    overflow-y: scroll;
-    overflow-x: hidden;
-  }
-  #frame #sidepanel #contacts::-webkit-scrollbar {
-    display: none;
-  }
-}
 #frame #sidepanel #contacts.expanded {
   height: calc(100% - 334px);
 }
@@ -656,14 +517,9 @@ p {
 }
 #frame #sidepanel #contacts ul li.contact {
   position: relative;
-  padding: 10px 0 15px 0;
+  padding: 10px 0 5px 0;
   font-size: 0.9em;
   cursor: pointer;
-}
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact {
-    padding: 6px 0 46px 8px;
-  }
 }
 #frame #sidepanel #contacts ul li.contact:hover {
   background: rgba(26, 79, 92, 0.767);
@@ -676,44 +532,19 @@ p {
   border: 2px solid rgba(26, 79, 92, 0.767) !important;
 }
 #frame #sidepanel #contacts ul li.contact .wrap {
-  width: 88%;
+  width: 95%;
   margin: 0 auto;
   position: relative;
 }
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap {
-    width: 100%;
-  }
-}
-#frame #sidepanel #contacts ul li.contact .wrap span {
-  position: absolute;
-  left: 0;
-  margin: -2px 0 0 -2px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 2px solid rgba(33, 99, 116, 0.767);
-  background: #95a5a6;
-}
-
 #frame #sidepanel #contacts ul li.contact .wrap img {
   width: 40px;
+  height: 40px;
   border-radius: 50%;
   float: left;
   margin-right: 10px;
 }
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap img {
-    margin-right: 0px;
-  }
-}
 #frame #sidepanel #contacts ul li.contact .wrap .meta {
   padding: 5px 0 0 0;
-}
-@media screen and (max-width: 735px) {
-  #frame #sidepanel #contacts ul li.contact .wrap .meta {
-    display: none;
-  }
 }
 #frame #sidepanel #contacts ul li.contact .wrap .meta .name {
   font-weight: 600;
@@ -747,7 +578,7 @@ p {
 #frame #sidepanel #bottom-bar button {
   float: left;
   border: none;
-  width: 50%;
+  width: 100%;
   padding: 10px 0;
   background: rgb(33, 99, 116);
   color: #f5f5f5;
