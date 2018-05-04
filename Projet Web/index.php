@@ -52,10 +52,10 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="index.php">Acceuil</a></li>
                 <li><a href="reseau.php">Réseau</a></li>
-                <li><a href="#">Emplois</a></li>
+                <li><a href="emploi.php">Emplois</a></li>
                 <li><a href="message.php">Messagerie</a></li>
-                <li><a href="#">Notifications</a></li>
-                <li class="active"><a href="#">Vous</a></li>
+                <li><a href="notif.php">Notifications</a></li>
+                <li class="active"><a href="profil.php">Vous</a></li>
             </ul>
         </div>
     </nav>
@@ -71,13 +71,12 @@
                 <div class="contact-container container-block">
                     <ul class="list-unstyled contact-list">
                         <li><i class="fa fa-envelope"></i><a href="mailto: yourname@email.com">comelolo@yolo.com</a></li>
-                        <li><i class="fa fa-phone"></i><a href="tel:0123 456 789">118 218</a></li>
                         <li><i class="fa fa-briefcase"></i><a href="#" target="_blank">Systemes Embarqués</a></li>
                         <li><i class="fa fa-graduation-cap"></i><a href="#" target="_blank">Promo 2020</a></li>
                     </ul>
                     <br/>
-                    <a href="">afficher profil</a><br>
-                    <a href="">modifier profil</a>
+                    <a href="profil.php">afficher profil</a><br>
+                    <a href="change_profil.php">modifier profil</a>
                     
                 </div> 
                 

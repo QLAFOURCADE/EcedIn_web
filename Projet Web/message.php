@@ -60,22 +60,22 @@ $con = connect_and_select_db();
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="index.html">Acceuil</a>
+                    <a href="index.php">Acceuil</a>
                 </li>
                 <li>
-                    <a href="reseau.html">Réseau</a>
+                    <a href="reseau.php">Réseau</a>
                 </li>
                 <li>
-                    <a href="#">Emplois</a>
+                    <a href="emploi.php">Emplois</a>
                 </li>
                 <li>
-                    <a href="#">Messagerie</a>
+                    <a href="message.php">Messagerie</a>
                 </li>
                 <li>
-                    <a href="#">Notifications</a>
+                    <a href="notif.php">Notifications</a>
                 </li>
                 <li class="active">
-                    <a href="#">Vous</a>
+                    <a href="profil.php">Vous</a>
                 </li>
             </ul>
         </div>
