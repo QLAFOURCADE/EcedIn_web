@@ -99,7 +99,7 @@ $con = connect_and_select_db();
                 <div id="contacts">
                     <ul>
                         <?php
-                            $search = "SELECT emmetteur FROM `discussion` WHERE recepteur = 'ad' UNION SELECT recepteur FROM discussion WHERE emmetteur = 'ad'";
+                            $search = "SELECT emmetteur FROM discussion WHERE recepteur = 'ad' UNION SELECT recepteur FROM discussion WHERE emmetteur = 'ad'";
                             $result = mysqli_query($con, $search);
                             while($discu = mysqli_fetch_array($result)) {
                                 $user_result = mysqli_query($con, "SELECT nom, prenom, photoprofil FROM utilisateur WHERE login = '".$discu['emmetteur']."'");
@@ -107,9 +107,12 @@ $con = connect_and_select_db();
                                     $lastname = $data['nom'];
                                     $firstname = $data['prenom'];
                                     $photo = $data['photoprofil'];
+                                    $discussion_active = 0;
                                     if ($photo=="") {$photo="assets/images/batman.jpg";}
+                                    if ($discu['emmetteur'] == $_GET['contact']) { $active="active";} else {$active="";}
                                     echo '
-                                    <li class="contact">
+                                    <a href="message.php?contact='.$discu['emmetteur'].'">
+                                    <li id="'.$discu["emmetteur"].'" class="contact '.$active.'">
                                         <div class="wrap">
                                             <img src=' .$photo. ' alt="" />
                                                 <div class="meta">
@@ -118,6 +121,7 @@ $con = connect_and_select_db();
                                             </div>
                                         </div>
                                     </li>
+                                    </a>
                                     ';
                                 }
                             }
@@ -132,14 +136,17 @@ $con = connect_and_select_db();
                 </div>
             </div>
             <div class="content">
-                <div class="contact-profile">
+                <div id="" class="contact-profile">
+                    <?php
+                    $contact_profile = mysqli_query($con, "SELECT nom, prenom, photoprofil FROM utilisateur WHERE login = '".$discu['emmetteur']."'");
+                    while ($data = mysqli_fetch_array($contact_profile)) {
+                        $lastname = $data['nom'];
+                        $firstname = $data['prenom'];
+                        $photo = $data['photoprofil'];
+                    }
+                    ?>
                     <img src="http://emilcarlsson.se/assets/harveyspecter.png" alt="" />
                     <p>Harvey Specter</p>
-                    <div class="social-media">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                    </div>
                 </div>
                 <div class="messages">
                     <ul>
@@ -210,28 +217,7 @@ $con = connect_and_select_db();
                 $("#contacts").toggleClass("expanded");
             });
 
-            $("#status-options ul li").click(function () {
-                $("#profile-img").removeClass();
-                $("#status-online").removeClass("active");
-                $("#status-away").removeClass("active");
-                $("#status-busy").removeClass("active");
-                $("#status-offline").removeClass("active");
-                $(this).addClass("active");
 
-                if ($("#status-online").hasClass("active")) {
-                    $("#profile-img").addClass("online");
-                } else if ($("#status-away").hasClass("active")) {
-                    $("#profile-img").addClass("away");
-                } else if ($("#status-busy").hasClass("active")) {
-                    $("#profile-img").addClass("busy");
-                } else if ($("#status-offline").hasClass("active")) {
-                    $("#profile-img").addClass("offline");
-                } else {
-                    $("#profile-img").removeClass();
-                };
-
-                $("#status-options").removeClass("active");
-            });
 
             function newMessage() {
                 message = $(".message-input input").val();

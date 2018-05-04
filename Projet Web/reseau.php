@@ -61,7 +61,7 @@
                     <a href="emploi.php">Emplois</a>
                 </li>
                 <li>
-                    <a href="message.php">Messagerie</a>
+                    <a href="message.php?contact=">Messagerie</a>
                 </li>
                 <li>
                     <a href="notif.php">Notifications</a>
