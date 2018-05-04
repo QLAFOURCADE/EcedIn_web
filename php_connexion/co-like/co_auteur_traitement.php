@@ -12,6 +12,9 @@
 	date_default_timezone_set('Europe/Paris');
 	$maintenant = date("Y-m-d H:i:s");
 
+	session_start();
+	//echo $_SESSION['login'];
+
 	
 	// verifier que les champs sont bien remplis
 	if($Login == "") { $error .= "Login vide <br/>";}
@@ -33,10 +36,14 @@
 		if($log != "" && $log_2 != "")
 		{
 			echo "bon identifiants : connexion réussie ";
+			$_SESSION['login'] = $Login;
 			// mettre sate et heure de la connexion : echo $maintenant;
 			$bdd->exec("UPDATE utilisateur SET dateco ='".$maintenant."' WHERE login = '".$Login."' AND password = '".$Password."'");
-			echo "modification réalisée";
-			// html : mettre lien vers l'interface de l'auteur qui vient de se connecter 
+			// identifier quelle session est ouverte : récupérer le login 
+			
+			//echo "modification réalisée";
+			// html : mettre lien vers l'interface de l'auteur qui vient de se connecter
+			header('Location: liker.php');
 		}
 		else 
 		{
