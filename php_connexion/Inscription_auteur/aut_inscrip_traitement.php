@@ -15,6 +15,7 @@
 	session_start();
 	//echo $_SESSION['login'];
 	$Log = $_SESSION['login'];
+	$Date_con = $_SESSION['dateco'];
 
 	// verifier que les champs sont bien remplis
 	if($Prenom == "") { $error .= "Prenom vide <br/>";}
@@ -25,6 +26,7 @@
 	if($Travail == ""){ $Travail = "NULL";}
  	if ($error == "") {
 		echo "Formulaire plein ! <br/> ";
+
  	}
  	else {
 		echo "Erreur : $error";
@@ -73,7 +75,7 @@
 		
 	// si formulaire plein on continue les actions
 	if($Prenom!="" && $Anniversaire!="" && $Choix != 0){
-	$bdd->exec("UPDATE utilisateur SET prenom ='".$Prenom."' , password ='".$Password."', anniversaire ='".$Anniversaire."', travail = '".$Travail."' , promotion ='".$Promotion."', majeure = '".$Majeure."' WHERE login = '".$Log."'");
+	$bdd->exec("UPDATE utilisateur SET prenom ='".$Prenom."' , password ='".$Password."', anniversaire ='".$Anniversaire."', travail = '".$Travail."' , promotion ='".$Promotion."', majeure = '".$Majeure."' , dateco = '".$Date_con."' WHERE login = '".$Log."'");
 	echo "modification réalisée";
 	}
 

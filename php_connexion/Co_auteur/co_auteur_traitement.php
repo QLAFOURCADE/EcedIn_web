@@ -9,6 +9,9 @@
 	// recuperer tout le contenu de la table utilisateur
 	$reponse = $bdd->query("SELECT * FROM utilisateur WHERE login = '".$Login."' AND password = '".$Password."'");
 
+	date_default_timezone_set('Europe/Paris');
+	$maintenant = date("Y-m-d H:i:s");
+
 	
 	// verifier que les champs sont bien remplis
 	if($Login == "") { $error .= "Login vide <br/>";}
@@ -30,6 +33,9 @@
 		if($log != "" && $log_2 != "")
 		{
 			echo "bon identifiants : connexion réussie ";
+			// mettre sate et heure de la connexion : echo $maintenant;
+			$bdd->exec("UPDATE utilisateur SET dateco ='".$maintenant."' WHERE login = '".$Login."' AND password = '".$Password."'");
+			echo "modification réalisée";
 			// html : mettre lien vers l'interface de l'auteur qui vient de se connecter 
 		}
 		else 
