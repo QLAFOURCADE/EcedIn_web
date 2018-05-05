@@ -12,7 +12,24 @@
     <link rel="stylesheet" href="assets/plugins/font-awesome/css/font-awesome.css">
     <link id="theme-style" rel="stylesheet" href="assets/css/styles.css">
     <link rel="stylesheet" href="assets/css/docs.css">
+    <style>
+        .img-profil {
+            padding: 3%;
+            border-radius: 50%;
+            width: 130;
+            height: 130;
+        }
+        .img-post {
+            padding: 2%;
+            border-radius: 50%;
+            width: 80;
+            height: 80;
+        }
 
+        .panel-default {
+            margin-top: 4%;
+        }
+    </style>
     <style>
         form {
             margin-top: 10px;
@@ -37,48 +54,55 @@
 <nav class="navbar-inverse navbar-fixed-top">
     <div class="container-fluid input-group">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">ECE Bond</a>
+            <a class="navbar-brand" href="Pagedaccueil.php">ECE Bond</a>
         </div>
 
     </div>
 </nav>
 
-
-
-
-<center>
+<left>
     <br>
     <br>
     <img src="assets/images/Icon_ECEBond.PNG" />
+</left>
+<center>
+    <h2> Administrateur</h2>
 </center>
 
 <br>
 <br>
 
 <div class="main">
-    <form name="myform" >
+    <form name="myform" action="co_ad_traitement.php" method="POST">
 
-        <div id="alertbox" class="alert alert-danger alert-dismissable fade in" style="display: none; color: black; white-space: pre-wrap;">
-
-        </div>
-
+        <table id="Formulaire">
+            <fieldset>
+                <legend>Connectez-vous</legend>
+                <tr class="spaceUnder">
+                    <td>Login :</td>
+                    <td>
+                        <input class="form-control" type="text" name="Login" >
+                    </td>
+                </tr>
+                <tr class="spaceUnder">
+                    <td>Mot de Passe:</td>
+                    <td>
+                        <input class="form-control" type="password" name="Password" >
+                    </td>
+                </tr>
+            </fieldset>
+        </table>
         <br>
         <br>
         <left>
-            <input class="btn btn-lg btn-success btn-block" type="submit" value="Auteur" />
+            <input class="btn btn-lg btn-success btn-block" type="submit" value="Se connecter" />
         </left>
         <br>
         <br>
 
-        <br>
-        <br>
-        <left>
-            <input class="btn btn-lg btn-success btn-block" type="submit" value="Administrateur" />
-        </left>
 
     </form>
 </div>
 
 </body>
-
 </html>

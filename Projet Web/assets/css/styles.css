@@ -337,7 +337,7 @@ p {
 #frame {
   width: 100%;
   min-width: 360px;
-  max-width: 95%;
+  max-width: 1200px;
   height: 92vh;
   margin-top: 2%;
   margin-left: 2%;

@@ -48,44 +48,12 @@
         }
     </style>
 
-    <script>
-        function validation() {
-            var name = document.forms["myform"]["nom"].value;
-            var numero = document.forms["myform"]["numero"].value;
-            var age = document.forms["myform"]["age"].value;
-            var classe = document.forms["myform"]["classe"].value;
-            var alertvalue = document.getElementById('alertbox');
-
-            var error = "";
-
-            if (name == "") {
-                error += "Le nom est vide\n";
-            }
-            if (numero == "") {
-                error += "Le numéro d'employé est vide\n";
-            }
-            if (age == "") {
-                error += "L'Ancienneté est vide\n";
-            }
-
-            if (error != "") {
-                alertvalue.style.display = "block";
-                alertvalue.style.visibility = "visible";
-                alertvalue.innerHTML = error;
-                return false;
-            } else {
-                return true;
-            }
-        }
-
-
-    </script>
 </head>
 <body>
     <nav class="navbar-inverse navbar-fixed-top">
         <div class="container-fluid input-group">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">ECE Bond</a>
+                <a class="navbar-brand" href="Pagedaccueil.php">ECE Bond</a>
             </div>
 
         </div>
@@ -104,21 +72,19 @@
     <br>
 
     <div class="main">
-        <form name="myform" onsubmit="return validation();" action="1traitement.php" method="POST">
-            <div id="alertbox" class="alert alert-danger alert-dismissable fade in" style="display: none; color: black; white-space: pre-wrap;">
-
-            </div>
+        <form name="myform"  action="co_auteur_traitement.php" method="POST">
+            
             <table>
                 <tr class="spaceUnder">
                     <td>Login :</td>
                     <td>
-                        <input class="form-control" type="text" name="login" id="login">
+                        <input class="form-control" type="text" name="Login1">
                     </td>
                 </tr>
                 <tr class="spaceUnder">
                     <td>Mot de Passe:</td>
                     <td>
-                        <input class="form-control" type="password" name="motdepasse" id="motdepasse">
+                        <input class="form-control" type="password" name="Password">
                     </td>
                 </tr>
 
@@ -126,22 +92,26 @@
             <br>
             <br>
             <left>
-                <input class="btn btn-lg btn-success btn-block" type="submit" value="Submit" />
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="Se connecter"  />
             </left>
             <br>
             <br>
+		</form>
+		
+		<form name="myform" action="val_ins_traitement.php" method="POST">
+            
             <table>
                 <tr class="spaceUnder">
                     <td>Login :</td>
                     <td>
-                        <input class="form-control" type="text" name="login" id="login">
+                        <input class="form-control" type="text" name="Login2" >
                     </td>
                 </tr>
                 <tr class="spaceUnder">
                     <td>Adresse mail:</td>
                     <td>
 
-                        <input class="form-control" type="text" name="adressemail" id="adressemail">
+                        <input class="form-control" type="text" name="Email" >
                     </td>
                     <td> <p>@edu.ece.fr</p></td>
                 </tr>
@@ -150,7 +120,7 @@
             <br>
             <br>
             <left>
-                <input class="btn btn-lg btn-success btn-block" type="submit" value="Submit" />
+                <input class="btn btn-lg btn-success btn-block" type="submit" value="S'inscrire" />
             </left>
         </form>
     </div>
